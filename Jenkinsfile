@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repo.git'
+                git 'https://github.com/Anushka-1404/Terra-ACG.git'
             }
         }
         stage('Initialize Terraform') {
