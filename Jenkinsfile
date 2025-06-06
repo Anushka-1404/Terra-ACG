@@ -1,8 +1,14 @@
 pipeline {
     agent any
+
+    tools {
+        git 'DefaultGit' // This should match the name you configured in Jenkins > Global Tool Configuration
+    }
+
     environment {
         GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-key')
     }
+
     stages {
         stage('Terraform Init') {
             steps {
