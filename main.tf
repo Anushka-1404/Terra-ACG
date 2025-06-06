@@ -12,8 +12,8 @@ provider "google" {
     region = "us-central1"
     zone = "us-central1-a"
     #credentials = file("C:/Users/ANUSHKAG/Downloads/Keys.json")
-    #credentials = file(env.GOOGLE_APPLICATION_CREDENTIALS)
-    credentials = var.credentials_file
+    credentials = file(env.GOOGLE_APPLICATION_CREDENTIALS)
+    #credentials = var.credentials_file
 
 }
 
