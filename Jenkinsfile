@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        git 'DefaultGit' // This should match the name you configured in Jenkins > Global Tool Configuration
+        git 'DefaultGit'
     }
 
     environment {
@@ -25,5 +25,19 @@ pipeline {
                 bat 'terraform apply -auto-approve -var "credentials_file=%GOOGLE_APPLICATION_CREDENTIALS%"'
             }
         }
+        stage('Terraform Destroy') {
+            when {
+                expression {
+                    return params.RUN_DESTROY == true
+                }
+            }
+            steps {
+                bat 'terraform destroy -auto-approve -var "credentials_file=%GOOGLE_APPLICATION_CREDENTIALS%"'
+            }
+        }
+    }
+
+    parameters {
+        booleanParam(name: 'RUN_DESTROY', defaultValue: false, description: 'Check to run terraform destroy')
     }
 }
