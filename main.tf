@@ -12,8 +12,15 @@ provider "google" {
     region = "us-central1"
     zone = "us-central1-a"
     #credentials = file("C:/Users/ANUSHKAG/Downloads/Keys.json")
-    credentials = file(env.GOOGLE_APPLICATION_CREDENTIALS)
+    #credentials = file(env.GOOGLE_APPLICATION_CREDENTIALS)
+    credentials = var.credentials_file
+
 }
+
+variable "credentials_file" {
+  type = string
+  }
+
 
 resource "google_compute_network" "compute_network" {
     name = "vpc-network"

@@ -11,12 +11,12 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                bat 'terraform plan'
+                bat 'terraform plan -var "credentials_file=%GOOGLE_APPLICATION_CREDENTIALS%"'
             }
         }
         stage('Terraform Apply') {
             steps {
-                bat 'terraform apply -auto-approve'
+                bat 'terraform apply -auto-approve -var "credentials_file=%GOOGLE_APPLICATION_CREDENTIALS%"'
             }
         }
     }
